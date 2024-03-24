@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="./css/cart.css">
+</head>
+<body>
+    <div class="cart">
+
+        <div class="inner-wrap">
+            <h2>Your Cart</h2>
+
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th class="product-remove">Remove Items</th>
+                        <th class="product-name">Product</th>
+                        <th class="product-price">Price</th>
+                        <th class="product-quantity">Quantity</th>
+                        <th class="product-line-total">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="product-camera">
+                        <td><button type="button" class="product-remove" data-id="product-camera"><i class="fa fa-times"></i></button></td>
+                        <td>Camera</td>
+                        <td class="product-price" data-price="3.99">3.99</td>
+                        <td class="product-quantity">
+                            <input type="number" pattern="\d*" step="1" min="1" max="5" value="1" data-id="product-camera">
+                            <button class="plus js-number-control">
+                                <i class="fa fa-plus-square"></i>
+                            </button>
+                            <button class="minus js-number-control">
+                                <i class="fa fa-minus-square"></i>
+                            </button>
+                        </td>
+                        <td class="product-line-total" id="product-camera-total" data-line-total="3.99">3.99</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</body>
+</html>

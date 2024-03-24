@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Haven | Online Restaurant Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">GOURMET HAVEN</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Reservations</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <h1>MENU LIST</h1>
+    </header>
+    <main>
+        <!-- Hero section, About section, Call-to-action buttons, etc. -->
+
+        <!--Scrolling texts-->
+        <div class="scroll-container">
+            <div class="scroll-content"><h1>OUR NEW UPCOMING SEASONAL DISHES!</h1></div>
+        </div>
+
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="./public/images/dish1.jpg" alt="Signature Dish 1" class="curvy-image">
+                <div class="caption">Signature Dish 1</div>
+            </div>
+            <div class="slide fade">
+                <img src="./public/images/dish2.jpg" alt="Signature Dish 2" class="curvy-image">
+                <div class="caption">Signature Dish 2</div>
+            </div>
+            <div class="slide fade">
+                <img src="./public/images/dish3.jpg" alt="Signature Dish 3" class="curvy-image">
+                <div class="caption">Signature Dish 3</div>
+            </div>
+            <!-- Add more slides as needed -->
+            
+            <!-- Navigation buttons -->
+            <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+            <a class="next" onclick="moveSlide(1)">&#10095;</a>
+        </div>
+
+        <!--Menu lists-->
+        <section class="menu-category">
+            <h2>Appetizers</h2>
+            <div class="menu-item">
+                <img src="./public/images/appetizer1.jpg" alt="Bruschetta" class="curvy-image">
+                <div class="item-details">
+                    <h3>Bruschetta</h3>
+                    <p>Fresh tomatoes, garlic, basil, and olive oil on toasted bread</p>
+                    <span class="price">Price: $8.99</span>
+                    <!-- <a href="checkout.html" class="order-button">Order</a> -->
+                    <button class="order-button">Order</button>
+                    <!-- <button class="order-button added-button">Added</button> -->
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./public/images/appetizer2.jpg" alt="Caprese Salad" class="curvy-image">
+                <div class="item-details">
+                    <h3>Caprese Salad</h3>
+                    <p>Tomatoes, fresh mozzarella, basil, and balsamic glaze</p>
+                    <span class="price">Price: $10.99</span>
+                    <!-- <a href="checkout.html" class="order-button">Order</a> -->
+                    <button class="order-button">Order</button>
+                </div>
+            </div>
+        </section>
+        <section class="menu-category">
+            <h2>Main Courses</h2>
+            <div class="menu-item">
+                <img src="./public/images/main_course1.jpg" alt="Filet Mignon" class="curvy-image">
+                <div class="item-details">
+                    <h3>Filet Mignon</h3>
+                    <p>8 oz. tenderloin steak served with mashed potatoes and seasonal vegetables</p>
+                    <span class="price">Price: $24.99</span>
+                    <!-- <a href="checkout.html" class="order-button">Order</a> -->
+                    <button class="order-button">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./public/images/main_course2.jpg" alt="Chicken Alfredo" class="curvy-image">
+                <div class="item-details">
+                    <h3>Chicken Alfredo</h3>
+                    <p>Grilled chicken breast served with creamy Alfredo sauce and fettuccine pasta</p>
+                    <span class="price">Price: $18.99</span>
+                    <!-- <a href="checkout.html" class="order-button">Order</a> -->
+                    <button class="order-button">Order</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Desserts</h2>
+            <div class="menu-item">
+                <img src="./public/images/dessert1.jpg" alt="Fruit Salad" class="curvy-image">
+                <div class="item-details">
+                    <h3>Fruit Salad</h3>
+                    <p>Tropical fruit added with a bit of vanilla cream together with chocolate sauce</p>
+                    <span class="price">Price: $9.99</span>
+                    <!-- <a href="checkout.html" class="order-button">Order</a> -->
+                    <button class="order-button">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./public/images/dessert2.jpg" alt="Tiramisu" class="curvy-image">
+                <div class="item-details">
+                    <h3>Tiramisu</h3>
+                    <p>Made with layers of coffee-soaked ladyfingers, mascarpone cheese, and cocoa powder.</p>
+                    <span class="price">Price: $12.99</span>
+                    <!-- <a href="checkout.html" class="order-button">Order</a> -->
+                    <button class="order-button">Order</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add more menu categories as needed -->
+        </div>
+        <a href="checkout.html" class="checkout-button">Checkout</a>
+    </main>
+    <footer>
+        <!-- Footer content -->
+        <p>Follow us on social media:</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" class="icon"><img src="./public/images/facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/" class="icon"><img src="./public/images/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com/" class="icon"><img src="./public/images/instagram.png" alt="Instagram"></a>
+        </div>
+        <p>&copy; 2024 Gourmet Haven. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

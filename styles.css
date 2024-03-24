@@ -1,0 +1,446 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3a0a0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/*curvy-shadow images*/
+.curvy-shadow {
+    border-radius: 10px; /* Adjust the value to control the curvature of the border */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow properties as needed */
+    width: 130px; /* Adjust the width as needed */
+    height: 130px; /* Adjust the height as needed */
+    object-fit: cover; /* Scale the image while preserving its aspect ratio */
+    border-radius: 50%; /* Create a circular border by setting border-radius to 50% of the width and height */
+}
+
+/*curvy-image (with a bit of added shadow)*/
+.curvy-image {
+    border-radius: 10px; /* Adjust the value to control the curvature of the border */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow properties as needed */
+}
+
+
+/*Text indent*/
+.text-indent {
+    text-indent: 20px;
+}
+
+/* Navigation bar styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #FF4500;
+}
+/* Style the signup and login links */
+.signup-login {
+    float: right; /* Align the links to the right */
+}
+
+.signup-login a {
+    padding: 14px 20px; /* Adjust padding for signup and login links */
+}
+
+/*login container and signup container*/
+.login-container, .signup-container, .contact-container {
+    max-width: 400px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding inside the container */
+    border: 1px solid #ccc; /* Add a border around the container */
+    border-radius: 8px; /* Add rounded corners to the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+    background-color: #bebebe; /* Add a background color to the container */
+}
+
+
+/* Header styles */
+header {
+    background-color: #ffab62;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* Logo styles */
+header img {
+    width: 150px;
+    height: auto;
+}
+
+/* Main content styles */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/*Title shadows styling*/
+h1, h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+/*Reservation*/
+.reservation-form {
+    max-width: 600px;
+    margin: auto;
+}
+
+.reservation-form h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+#image{
+    background-color: white;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/*Menu category*/
+.menu-category {
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.menu-item img {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-details h3 {
+    margin-bottom: 5px;
+}
+
+.price {
+    color: #777;
+    font-weight: bold;
+}
+
+/*Order Button*/
+.order-button {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.added-button {
+    display: none;
+}
+
+.order-button:hover {
+    background-color: #555;
+}
+
+/*checkout button*/
+.checkout-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.checkout-button:hover {
+    background-color: #555;
+}
+
+/* Restaurant images section styles */
+.restaurant-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.restaurant-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Restaurant info section styles */
+.restaurant-info {
+    margin-top: 40px;
+}
+
+.restaurant-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.restaurant-info p {
+    margin-bottom: 20px;
+}
+
+.restaurant-info address {
+    font-style: normal;
+}
+
+/*Slideshow container*/
+.slideshow-container {
+    position: relative;
+    max-width: 350px;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.caption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 8px;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center; 
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/*Text Scroll container*/
+.scroll-container {
+    overflow: hidden;
+}
+
+.scroll-content {
+    animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Reservation button styles */
+.btn-reservation {
+    display: inline-block;
+    background-color: #FF4500;
+    color: #fff;
+    font-size: 1em;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reservation:hover {
+    background-color: #FF6347;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-links {
+    list-style: none;
+}
+
+.social-links li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+/*social icons*/
+.social-icons {
+    text-align: center;
+}
+
+.icon {
+    display: inline-block;
+    margin: 0 10px; /* Adjust spacing between icons as needed */
+}
+
+.icon img {
+    width: 30px; /* Adjust the size of the icons as needed */
+    height: auto;
+}
+
+/*Map*/
+.map {
+    width: 100%;
+    height: 300px; /* Adjust the height of the map as needed */
+    margin-top: 20px;
+}
+
+/* Table */
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  /* .table tr:hover {background-color: #ddd;} */
+  
+  .table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #7a817e;
+    color: white;
+  }
+
+/* Checkout */
+
+.hidden{
+    display: none;
+}

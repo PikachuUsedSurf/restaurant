@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Haven | Online Restaurant Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">GOURMET HAVEN</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Reservations</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <h1>CHECKOUT</h1>
+        <img src="./public/images/restaurant_logo.jpg" alt="Gourmet Haven Logo" class="curvy-shadow">
+    </header>
+    <main>
+        <!-- Hero section, About section, Call-to-action buttons, etc. -->
+        <section class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="order-items">
+                <!-- Order items will be dynamically added here -->
+                <p class="item hidden"></p>
+                <span class="price hidden"></span>
+
+            </div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="total-price">$0.00</span>
+            </div>
+        </section>
+        <button class="submit-order">Submit Order</button>
+    </main>
+    <footer>
+        <!-- Footer content -->
+        <p>Follow us on social media:</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" class="icon"><img src="./public/images/facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/" class="icon"><img src="./public/images/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com/" class="icon"><img src="./public/images/instagram.png" alt="Instagram"></a>
+        </div>
+        <p>&copy; 2024 Gourmet Haven. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- <script>
+        
+    </script> -->
+</body>
+</html>
