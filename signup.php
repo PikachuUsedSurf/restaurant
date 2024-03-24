@@ -1,3 +1,48 @@
+<?php
+// Database connection details (replace with your own)
+$servername = "localhost"; 
+$username = "root";
+$password = "";
+$dbname = "menu";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+// Get form data 
+$fullname = $_POST['fullname'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$username = $_POST['username'];
+$userPassword = $_POST['password'];
+
+// IMPORTANT: Hash the password for security 
+$hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
+
+// Prepare INSERT statement (prevents SQL injection)
+$stmt = $conn->prepare("INSERT INTO users (fullname, email, phone, username, password) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $fullname, $email, $phone, $username, $hashedPassword);
+
+// Execute the statement
+if ($stmt->execute()) {
+    // Success! 
+    header("Location: signup_success.html"); // Redirect on success
+    exit();
+} else {
+    // Handle errors (e.g., duplicate email or username)
+    header("Location: signup.html?error=signup_failed"); 
+    exit();
+}
+
+$stmt->close();
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
