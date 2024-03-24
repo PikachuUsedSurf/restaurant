@@ -1,3 +1,59 @@
+<?php
+// Database credentials (replace with your own)
+$servername = "localhost"; 
+$username = "root";
+$password = "";
+$dbname = "menu";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+// Get form data
+$emailOrUsername = $_POST['email'];
+$userPassword = $_POST['password'];
+
+// Prepare a SELECT statement (IMPORTANT: Use prepared statements for security)
+$stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
+$stmt->bind_param("ss", $emailOrUsername, $emailOrUsername); 
+$stmt->execute();
+$stmt->store_result(); // Necessary for counting rows below
+
+// Check if a user with that email/username exists
+if ($stmt->num_rows > 0) {
+    $stmt->bind_result($userId, $username, $hashedPassword);
+    $stmt->fetch();
+
+    // Verify password
+    if (password_verify($userPassword, $hashedPassword)) {
+        // Password is correct - start a session for the logged-in user
+        session_start();
+        $_SESSION['user_id'] = $userId;
+        $_SESSION['username'] = $username;
+
+        // Redirect to a logged-in area
+        header("Location: members_area.php"); 
+        exit(); 
+    } else {
+        // Incorrect password
+        header("Location: index.html?error=incorrect_password"); // Redirect with error message
+        exit();
+    }
+} else {
+    // No user found
+    header("Location: index.html?error=user_not_found"); // Redirect with error message
+    exit();
+}
+
+$stmt->close();
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
