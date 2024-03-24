@@ -13,34 +13,56 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-// Get form data 
-$fullname = $_POST['fullname'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$username = $_POST['username'];
-$userPassword = $_POST['password'];
+// Initialize error variable
+$error = '';
 
-// IMPORTANT: Hash the password for security 
-$hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
+// If the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data 
+    $fullname = isset($_POST['fullname']) ? $_POST['fullname'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $userPassword = isset($_POST['password']) ? $_POST['password'] : '';
 
-// Prepare INSERT statement (prevents SQL injection)
-$stmt = $conn->prepare("INSERT INTO users (fullname, email, phone, username, password) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $fullname, $email, $phone, $username, $hashedPassword);
+    // IMPORTANT: Hash the password for security 
+    $hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
 
-// Execute the statement
-if ($stmt->execute()) {
-    // Success! 
-    header("Location: signup_success.html"); // Redirect on success
-    exit();
-} else {
-    // Handle errors (e.g., duplicate email or username)
-    header("Location: signup.html?error=signup_failed"); 
-    exit();
+    // Prepare SELECT statement to check for duplicate email
+    $checkStmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $checkStmt->bind_param("s", $email);
+    $checkStmt->execute();
+    $result = $checkStmt->get_result();
+
+    // Check if email already exists
+    if ($result->num_rows > 0) {
+        // Email already exists
+        $error = "Email already exists. Please use a different email.";
+    } else {
+        // No duplicate email found, proceed with the INSERT query
+        $stmt = $conn->prepare("INSERT INTO users (fullname, email, phone, username, password) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $fullname, $email, $phone, $username, $hashedPassword);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            // Success! 
+            header("Location: index.php"); // Redirect on success
+            exit();
+        } else {
+            // Handle other errors
+            $error = "An error occurred. Please try again later.";
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
 }
 
-$stmt->close();
+// Close the connection
 $conn->close();
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -52,22 +74,16 @@ $conn->close();
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">GOURMET HAVEN</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="reservation.html">Reservations</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<?php
+include('header.php')
+?>
     <header>
         <h1>SIGNUP</h1>
         <img src="./public/images/restaurant_logo.jpg" alt="Gourmet Haven Logo" class="curvy-shadow">
     </header>
+    <?php if (!empty($error)) : ?>
+        <p><?php echo $error; ?></p>
+    <?php endif; ?>
     <main>
         <div class="signup-container">
             <h2>Create an Account</h2>
@@ -86,12 +102,6 @@ $conn->close();
 
                 <label for="password">Create Password</label>
                 <input type="password" id="password" name="password" required>
-    
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirm-password" required><br>
-    
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a></label>
     
                 <button type="submit">Signup</button>
             </form>
