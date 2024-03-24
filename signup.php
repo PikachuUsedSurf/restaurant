@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute the statement
         if ($stmt->execute()) {
             // Success! 
-            header("Location: index.php"); // Redirect on success
+            header("Location: login.php"); // Redirect to login page on success
             exit();
         } else {
             // Handle other errors
@@ -61,8 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the connection
 $conn->close();
 ?>
-
-
 
 
 <!DOCTYPE html>

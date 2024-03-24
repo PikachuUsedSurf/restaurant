@@ -74,18 +74,23 @@ include('header.php')
         <br><br><br><br>
         <div class="login-container">
             <h2>Login</h2>
-            <form action="login.php" method="POST"> <!-- Replacing "login.php" with the backend script -->
+
+            <?php if (isset($_GET['error']) && $_GET['error'] === 'user_not_found') : ?>
+                <p style="color: red;">User not found. Please check your email or username and try again.</p>
+            <?php elseif (isset($_GET['error']) && $_GET['error'] === 'incorrect_password') : ?>
+                <p style="color: red;">Incorrect password. Please try again.</p>
+            <?php endif; ?>
+
+            <form action="login.php" method="POST">
                 <label for="email">Email or Username</label>
                 <input type="text" id="email" name="email" required>
-    
+                
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required><br>
-    
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label>
-    
+                <input type="password" id="password" name="password" required>
+                
                 <button type="submit">Login</button>
             </form>
+
             <p>Forgot your password? <a href="password_recovery.html">Recover Password</a></p>
             <p>Don't have an account? <a href="signup.html">Signup</a></p>
         </div>
