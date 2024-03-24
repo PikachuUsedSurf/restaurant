@@ -1,5 +1,5 @@
 <?php
-// Database credentials (replace with your own)
+// Database connection details (replace with your own)
 $servername = "localhost"; 
 $username = "root";
 $password = "";
@@ -13,43 +13,41 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-// Get form data
-$emailOrUsername = $_POST['email'];
-$userPassword = $_POST['password'];
+// Initialize error variable
+$error = '';
 
-// Prepare a SELECT statement (IMPORTANT: Use prepared statements for security)
-$stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
-$stmt->bind_param("ss", $emailOrUsername, $emailOrUsername); 
-$stmt->execute();
-$stmt->store_result(); // Necessary for counting rows below
+// If the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data 
+    $emailOrUsername = isset($_POST['email']) ? $_POST['email'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-// Check if a user with that email/username exists
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($userId, $username, $hashedPassword);
-    $stmt->fetch();
+    // Query the database to check if the user exists
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? OR username = ?");
+    $stmt->bind_param("ss", $emailOrUsername, $emailOrUsername);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // Verify password
-    if (password_verify($userPassword, $hashedPassword)) {
-        // Password is correct - start a session for the logged-in user
-        session_start();
-        $_SESSION['user_id'] = $userId;
-        $_SESSION['username'] = $username;
-
-        // Redirect to a logged-in area
-        header("Location: members_area.php"); 
-        exit(); 
+    if ($result->num_rows == 1) {
+        // User exists, verify password
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            // Password is correct, redirect to dashboard or profile page
+            header("Location: index.php"); // Replace "dashboard.php" with your desired destination
+            exit();
+        } else {
+            // Incorrect password
+            header("Location: login.php?error=incorrect_password");
+            exit();
+        }
     } else {
-        // Incorrect password
-        header("Location: index.html?error=incorrect_password"); // Redirect with error message
+        // User not found
+        header("Location: login.php?error=user_not_found");
         exit();
     }
-} else {
-    // No user found
-    header("Location: index.html?error=user_not_found"); // Redirect with error message
-    exit();
 }
 
-$stmt->close();
+// Close the connection
 $conn->close();
 ?>
 
