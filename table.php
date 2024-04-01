@@ -1,7 +1,17 @@
+<?php
+// Assuming you have already established a database connection
+
+// Fetch items belonging to the "Appetizers" category
+$category = "Appetizers";
+$sql = "SELECT * FROM menu_items WHERE category = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$category]);
+$appetizers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <section class="menu-category">
     <h2>Appetizers</h2>
     <?php
-    // Assuming $appetizers is an array of menu items fetched from the database
     foreach ($appetizers as $appetizer) {
         ?>
         <div class="menu-item">
@@ -17,5 +27,3 @@
     }
     ?>
 </section>
-
-<!-- Repeat the same structure for other menu categories -->
