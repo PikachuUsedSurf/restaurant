@@ -9,6 +9,22 @@ $stmt->execute([$category]);
 $appetizers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<?php 
+$category = "maincourses";
+$sql = "SELECT * FROM menu_items WHERE catergory = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$category]);
+$maincourses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<?php
+$category = "desserts";
+$sql = "SELECT * FROM menu_items WHERE category = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$category]);
+$desserts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <section class="menu-category">
     <h2>Appetizers</h2>
     <?php
