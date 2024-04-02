@@ -1,20 +1,20 @@
 <?php
-// Assuming you have already established a database connection
 
-// Fetch items belonging to the "Appetizers" category
-$category = "Appetizers";
-$sql = "SELECT * FROM menu_items WHERE category = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$category]);
-$appetizers = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
-<?php 
-$category = "maincourses";
-$sql = "SELECT * FROM menu_items WHERE catergory = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$category]);
-$maincourses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Define the categories you want to fetch
+$categories = array("Appetizers", "maincourses", "desserts");
+
+// Array to store results
+$menu_items = array();
+
+// Loop through the categories
+foreach ($categories as $category) {
+    $sql = "SELECT * FROM menu_items WHERE category = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$category]);
+    $menu_items[$category] = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+}
+
 ?>
 
 <?php
